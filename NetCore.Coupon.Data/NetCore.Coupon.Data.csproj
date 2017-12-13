@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetCore.Coupon.Contracts\NetCore.Coupon.Contracts.csproj" />
+    <ProjectReference Include="..\NetCore.Coupon.Utility\NetCore.Coupon.Utility.csproj" />
+    <ProjectReference Include="..\TopSdk\TopSdk.csproj" />
+  </ItemGroup>
+
+</Project>

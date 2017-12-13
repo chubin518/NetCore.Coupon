@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopSdk", "TopSdk\TopSdk.csproj", "{AB165984-4261-4698-B349-97B21884132E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Coupon.API", "NetCore.Coupon.API\NetCore.Coupon.API.csproj", "{054C5781-6E36-4CFD-B22B-FC5157178AAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Coupon.Service", "NetCore.Coupon.Service\NetCore.Coupon.Service.csproj", "{7C7C48DB-68C0-440B-8990-6926BC73EF0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Coupon.Contracts", "NetCore.Coupon.Contracts\NetCore.Coupon.Contracts.csproj", "{E7CFFA4C-5E14-44FA-81B2-B443D128ACAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Coupon.Data", "NetCore.Coupon.Data\NetCore.Coupon.Data.csproj", "{3C910ABA-B846-4787-AFC3-654CF109FE08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Coupon.Utility", "NetCore.Coupon.Utility\NetCore.Coupon.Utility.csproj", "{FF6FE3DF-080F-4B42-B6CB-41FFC156E51B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB165984-4261-4698-B349-97B21884132E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB165984-4261-4698-B349-97B21884132E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB165984-4261-4698-B349-97B21884132E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB165984-4261-4698-B349-97B21884132E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{054C5781-6E36-4CFD-B22B-FC5157178AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054C5781-6E36-4CFD-B22B-FC5157178AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054C5781-6E36-4CFD-B22B-FC5157178AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{054C5781-6E36-4CFD-B22B-FC5157178AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7C48DB-68C0-440B-8990-6926BC73EF0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7C48DB-68C0-440B-8990-6926BC73EF0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7C48DB-68C0-440B-8990-6926BC73EF0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7C48DB-68C0-440B-8990-6926BC73EF0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7CFFA4C-5E14-44FA-81B2-B443D128ACAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7CFFA4C-5E14-44FA-81B2-B443D128ACAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7CFFA4C-5E14-44FA-81B2-B443D128ACAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7CFFA4C-5E14-44FA-81B2-B443D128ACAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C910ABA-B846-4787-AFC3-654CF109FE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C910ABA-B846-4787-AFC3-654CF109FE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C910ABA-B846-4787-AFC3-654CF109FE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C910ABA-B846-4787-AFC3-654CF109FE08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF6FE3DF-080F-4B42-B6CB-41FFC156E51B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6FE3DF-080F-4B42-B6CB-41FFC156E51B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6FE3DF-080F-4B42-B6CB-41FFC156E51B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6FE3DF-080F-4B42-B6CB-41FFC156E51B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0CFB8FF-3C9D-4F41-B1CD-668173FD21E5}
+	EndGlobalSection
+EndGlobal
