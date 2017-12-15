@@ -15,44 +15,67 @@ namespace NetCore.Coupon.API.Controllers
     [Route("search")]
     public class ProductListController : Controller
     {
-        IProductListService productListService;
+        IProductTopicService productTopicService;
+        IProductSearchService productSearchService;
+        IProductClassifyService productClassifyService;
         IMemoryCache memoryCache;
-        public ProductListController(IProductListService productListService, IMemoryCache memoryCache)
+        public ProductListController(IMemoryCache memoryCache, IProductTopicService productTopicService,
+        IProductSearchService productSearchService,
+        IProductClassifyService productClassifyService)
         {
-            this.productListService = productListService;
             this.memoryCache = memoryCache;
+            this.productClassifyService = productClassifyService;
+            this.productSearchService = productSearchService;
+            this.productTopicService = productTopicService;
         }
 
         [Route("Product")]
 
-        public ProductListResponse Search(string k = "", int pageno = 1, int pagesize = 100, int sort = 0)
+        public async Task<ProductListResponse> Search(string k = "", int pageno = 1, int pagesize = 100, int sort = 0)
         {
-            return memoryCache.GetOrCreate($"product{k}_{pageno}{pagesize}_{sort}", (entry) =>
+            return await memoryCache.GetOrCreate($"Searchproduct{k}_{pageno}{pagesize}_{sort}", (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(9);
-                return productListService.Search(new ProductSearchRequest() { KeyWord = k, PageNo = pageno, PageSize = pagesize, Sort = sort });
+                return productSearchService.List(new ProductSearchRequest()
+                {
+                    KeyWord = k,
+                    PageNo = pageno,
+                    PageSize = pagesize,
+                    Sort = sort
+                });
             });
         }
 
         [Route("Cats")]
 
-        public ProductListResponse CatProducts(int cat = 0, int pageno = 1, int pagesize = 100, int sort = 0)
+        public async Task<ProductListResponse> CatProducts(int cat = 0, int pageno = 1, int pagesize = 100, int sort = 0)
         {
-            return memoryCache.GetOrCreate($"product{cat}_{pageno}{pagesize}_{sort}", (entry) =>
+            return await memoryCache.GetOrCreate($"CatProduct{cat}_{pageno}{pagesize}_{sort}", (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(13);
-                return productListService.CatProducts(new ProductListRequest() { Cat = cat, PageNo = pageno, Sort = sort, PageSize = pagesize });
+                return productClassifyService.List(new ProductClassifyRequest()
+                {
+                    Cat = cat,
+                    PageNo = pageno,
+                    PageSize = pagesize,
+                    Sort = sort
+                });
             });
         }
 
         [Route("Favorite")]
 
-        public ProductListResponse TopicProducts(int t = 0, int pageno = 1, int pagesize = 50, int sort = 0, string ak = "")
+        public async Task<ProductListResponse> Topic(int t = 0, int pageno = 1, int pagesize = 50, int sort = 0, string ak = "")
         {
-            return memoryCache.GetOrCreate($"product{t}_{pageno}{pagesize}_{sort}", (entry) =>
+            return await memoryCache.GetOrCreate($"Topicproduct{t}_{pageno}{pagesize}_{sort}", (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(11);
-                return productListService.TopicProducts(new ProductSpecialRequest() { Type = t, Sort = sort, PageNo = pageno });
+                return productTopicService.WeiXin(new ProductTopicRequest()
+                {
+                    Type = t,
+                    PageNo = pageno,
+                    Sort = sort
+                });
             });
         }
 

@@ -16,7 +16,7 @@ namespace NetCore.Coupon.Contracts.Entity
         public string ErMsg { get; set; }
 
         [JsonProperty("data")]
-        public QingtaokeProductItem[] Data { get; set; }
+        public QingtaokeItem[] Data { get; set; }
     }
 
 }

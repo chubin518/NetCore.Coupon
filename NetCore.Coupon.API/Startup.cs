@@ -22,6 +22,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NetCore.Coupon.Data.TaokeZhushou;
+using NetCore.Coupon.Data.TaokeJidi;
 
 namespace NetCore.Coupon.API
 {
@@ -59,11 +60,14 @@ namespace NetCore.Coupon.API
             services.AddScoped<IQingtaokeApiDataRepository, QingtaokeApiDataRepository>();
             services.AddScoped<IDataokeApiDataRepository, DataokeApiDataRepository>();
             services.AddScoped<ITaokeZhushouApiDataRepository, TaokeZhushouApiDataRepository>();
+            services.AddScoped<ITaokeJidiApiDataRepository, TaokeJidiApiDataRepository>();
 
             services.AddScoped<ITaokooulingService, TaokooulingService>();
             services.AddScoped<IProductDetailService, ProductDetailService>();
-            services.AddScoped<IProductListService, ProductListService>();
+            services.AddScoped<IProductTopicService, ProductTopicService>();
             services.AddScoped<IProductConfigService, ProductConfigService>();
+            services.AddScoped<IProductSearchService, ProductSearchService>();
+            services.AddScoped<IProductClassifyService, ProductClassifyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

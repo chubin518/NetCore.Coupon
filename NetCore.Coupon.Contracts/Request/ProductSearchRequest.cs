@@ -16,6 +16,8 @@ namespace NetCore.Coupon.Contracts.Request
 
         public int TodayNew { get; set; }
 
+        public int Tmall { get; set; }
+
         public int Juhuasuan { get; set; }
 
         public int Taoqianggou { get; set; }

@@ -17,12 +17,10 @@ namespace NetCore.Coupon.API.Controllers
     public class ConfigController : Controller
     {
         IProductConfigService productConfigService;
-        IProductListService productListService;
         IMemoryCache memoryCache;
-        public ConfigController(IProductConfigService productConfigService, IProductListService productListService, IMemoryCache memoryCache)
+        public ConfigController(IProductConfigService productConfigService, IMemoryCache memoryCache)
         {
             this.productConfigService = productConfigService;
-            this.productListService = productListService;
             this.memoryCache = memoryCache;
         }
         [Route("index")]
@@ -32,8 +30,6 @@ namespace NetCore.Coupon.API.Controllers
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
                 var result = productConfigService.HomeConfig(k);
-                result.Products = productListService.CatProducts(new ProductListRequest() { Cat = 0, PageNo = 1 })?.Datas;
-                result.Top100 = productListService.TopicProducts(new ProductSpecialRequest() { Type = 1, PageNo = 1 })?.Datas;
                 return result;
             });
         }

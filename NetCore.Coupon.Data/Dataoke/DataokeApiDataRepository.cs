@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using NetCore.Coupon.Utility;
+using System.Threading.Tasks;
 
 namespace NetCore.Coupon.Data.Dataoke
 {
@@ -16,16 +17,23 @@ namespace NetCore.Coupon.Data.Dataoke
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public List<TbkProductInfo> Top100(ProductSearchRequest request)
+        public Task<List<TbkProductInfo>> Top100(ProductTopicRequest request)
         {
-            var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_URL_TOP, new Dictionary<string, string>() {
+            return Task.Factory.StartNew(() =>
+             {
+                 if (request.PageNo >= 2)
+                 {
+                     return new List<TbkProductInfo>();
+                 }
+                 var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_TOP100, new Dictionary<string, string>() {
                         { "appkey", ConstantsUtils.DATAOKE_APP_KEY }
-                    });
-            if (null != dtkResponse && dtkResponse.Result != null)
-            {
-                return GetProductList(dtkResponse.Result);
-            }
-            return new List<TbkProductInfo>();
+                     });
+                 if (null != dtkResponse && dtkResponse.Result != null)
+                 {
+                     return GetProductList(dtkResponse.Result);
+                 }
+                 return new List<TbkProductInfo>();
+             });
         }
 
         /// <summary>
@@ -33,16 +41,23 @@ namespace NetCore.Coupon.Data.Dataoke
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public List<TbkProductInfo> XiaoLiang(ProductSearchRequest request)
+        public Task<List<TbkProductInfo>> XiaoLiang(ProductTopicRequest request)
         {
-            var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_URL_PAOLIANG, new Dictionary<string, string>() {
+            return Task.Factory.StartNew(() =>
+            {
+                if (request.PageNo >= 2)
+                {
+                    return new List<TbkProductInfo>();
+                }
+                var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_PAOLIANG, new Dictionary<string, string>() {
                         { "appkey", ConstantsUtils.DATAOKE_APP_KEY }
                     });
-            if (null != dtkResponse && dtkResponse.Result != null)
-            {
-                return GetProductList(dtkResponse.Result);
-            }
-            return new List<TbkProductInfo>();
+                if (null != dtkResponse && dtkResponse.Result != null)
+                {
+                    return GetProductList(dtkResponse.Result);
+                }
+                return new List<TbkProductInfo>();
+            });
         }
 
         /// <summary>
@@ -50,17 +65,20 @@ namespace NetCore.Coupon.Data.Dataoke
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public List<TbkProductInfo> QuanZhan(ProductSearchRequest request)
+        public Task<List<TbkProductInfo>> All(ProductTopicRequest request)
         {
-            var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_URL_ALL, new Dictionary<string, string>() {
-                        { "appkey", ConstantsUtils.DATAOKE_APP_KEY },
-                        { "page", "1" }
-                    });
-            if (null != dtkResponse && dtkResponse.Result != null)
+            return Task.Factory.StartNew(() =>
             {
-                return GetProductList(dtkResponse.Result);
-            }
-            return new List<TbkProductInfo>();
+                var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_ALL, new Dictionary<string, string>() {
+                        { "appkey", ConstantsUtils.DATAOKE_APP_KEY },
+                        { "page", request.PageNo.ToString() }
+                    });
+                if (null != dtkResponse && dtkResponse.Result != null)
+                {
+                    return GetProductList(dtkResponse.Result);
+                }
+                return new List<TbkProductInfo>();
+            });
         }
 
         /// <summary>
@@ -68,7 +86,7 @@ namespace NetCore.Coupon.Data.Dataoke
         /// </summary>
         /// <param name="qtkResponse"></param>
         /// <returns></returns>
-        private static List<TbkProductInfo> GetProductList(IEnumerable<DaotaokeProductItem> lstDatas)
+        private static List<TbkProductInfo> GetProductList(IEnumerable<DaotaokeItem> lstDatas)
         {
             if (null != lstDatas && lstDatas.Any())
             {

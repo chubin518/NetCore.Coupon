@@ -13,8 +13,8 @@ namespace NetCore.Coupon.Utility
         public const string DEFUALTTAOKOULING = "";
 
         #region TAOBAO_SDK
-        public static readonly string TAOBAO_SDK_PID = "mm_124544751_34022481_121394480";
-        public static readonly long ADZONE_ID = 121394480;
+        public const string TAOBAO_SDK_PID = "mm_124544751_34022481_121318545";
+        public const long ADZONE_ID = 121394480;
 
         public const string SERVER_URL = "https://eco.taobao.com/router/rest";
         public const string APP_KEY = "24556509";
@@ -28,7 +28,7 @@ namespace NetCore.Coupon.Utility
         #endregion
 
         #region TAOBAO_API
-        public static readonly string TAOBAO_API_PID = "mm_124544751_34022481_121394480";
+        public const string TAOBAO_API_PID = "mm_124544751_34022481_121394480";
 
         public const string TAOBAO_API_COUPONLIST = "https://uland.taobao.com/cp/coupon_list";
 
@@ -42,46 +42,64 @@ namespace NetCore.Coupon.Utility
         #endregion
 
         #region QINGTAOKE_API
-        public static readonly string QINGTAOKE_PID = "mm_124544751_33334167_118612702";
+        public const string QINGTAOKE_PID = "mm_124544751_34116440_122972603";
 
-        public static readonly string QINGTAOKE_APP_KEY = "5xXWWuuO";
+        public const string QINGTAOKE_APP_KEY = "5xXWWuuO";
 
-        public static readonly string QINGTAOKE_URL_SEARCH = "http://openapi.qingtaoke.com/search?v=1.0&s_type=1";
+        public const string QINGTAOKE_SEARCH = "http://openapi.qingtaoke.com/search?v=1.0&s_type=1";
 
-        public static readonly string QINGTAOKE_URL_LIST = "http://openapi.qingtaoke.com/qingsoulist?v=1.0";
+        public const string QINGTAOKE_LIST = "http://openapi.qingtaoke.com/qingsoulist?v=1.0";
 
-        public static readonly string QINGTAOKE_BAOKUAN = "http://openapi.qingtaoke.com/baokuan?v=1.0";
+        public const string QINGTAOKE_BAOKUAN = "http://openapi.qingtaoke.com/baokuan?v=1.0";
 
         #endregion
 
         #region DATAOKE_API
-        public static readonly string DATAOKE_PID = "mm_124544751_33334167_118612702";
+        public const string DATAOKE_PID = "mm_124544751_34116440_121214962";
 
-        public static readonly string DATAOKE_APP_KEY = "dw11okeue2";
+        public const string DATAOKE_APP_KEY = "dw11okeue2";
         //全站领券API接口
-        public static readonly string DATAOKE_URL_ALL = "http://api.dataoke.com/index.php?r=Port/index&type=total&v=2";
+        public const string DATAOKE_ALL = "http://api.dataoke.com/index.php?r=Port/index&type=total&v=2";
         //TOP100人气榜
-        public static readonly string DATAOKE_URL_TOP = "http://api.dataoke.com/index.php?r=Port/index&type=top100&v=2";
+        public const string DATAOKE_TOP100 = "http://api.dataoke.com/index.php?r=Port/index&type=top100&v=2";
         //实时销量榜
-        public static readonly string DATAOKE_URL_PAOLIANG = "http://api.dataoke.com/index.php?r=Port/index&type=paoliang&v=2";
+        public const string DATAOKE_PAOLIANG = "http://api.dataoke.com/index.php?r=Port/index&type=paoliang&v=2";
 
         #endregion
 
         #region TAOKEZHUSHOU_API
-        public static readonly string TAOKEZHUSHOU_PID = "mm_124544751_33334167_118612702";
-        public static readonly string TAOKEZHUSHOU_KEY = "3120c1fb7c4b04a8";
+        public const string TAOKEZHUSHOU_PID = "mm_124544751_31444007_115482389";
+        public const string TAOKEZHUSHOU_KEY = "3120c1fb7c4b04a8";
         /// <summary>
         /// 两小时销量榜API (app_key,page)
         /// </summary>
-        public const string TAOKEZHUSHOU_URL_TOPHOUR = "http://api.taokezhushou.com/api/v1/top_hour";
+        public const string TAOKEZHUSHOU_TOPHOUR = "http://api.taokezhushou.com/api/v1/top_hour";
         /// <summary>
         /// 全天销量榜API (app_key,page)
         /// </summary>
-        public const string TAOKEZHUSHOU_URL_TOPDAY = "http://api.taokezhushou.com/api/v1/top_day";
+        public const string TAOKEZHUSHOU_TOPDAY = "http://api.taokezhushou.com/api/v1/top_day";
         /// <summary>
         /// 商品搜索API
         /// </summary>
-        public const string TAOKEZHUSHOU_URL_SEARCH = "http://api.taokezhushou.com/api/v1/search";
+        public const string TAOKEZHUSHOU_SEARCH = "http://api.taokezhushou.com/api/v1/search";
+        /// <summary>
+        /// 全网商品
+        /// </summary>
+        public const string TAOKEZHUSHOU_ALL = " http://api.taokezhushou.com/api/v1/all";
+        #endregion
+
+        #region TAOKEJIDI_API
+
+        public const string TAOKEJIDI_PID = "mm_124544751_33334167_118808727";
+        public const string TAOKEJIDI_KEY = "2e647d2b90d02e01cdcb56afa0e222b8";
+        public const string TAOKEJIDI_TOP100 = "http://api.tkjidi.com/getGoodsLink?type=top100";
+        public const string TAOKEJIDI_DAPAI = "http://api.tkjidi.com/getGoodsLink?type=dapai";
+        public const string TAOKEJIDI_BIPAI = "http://api.tkjidi.com/getGoodsLink?type=bipai";
+        public const string TAOKEJIDI_SEARCH = "http://api.tkjidi.com/getGoodsLink?type=so";
+        public const string TAOKEJIDI_CATEGORY = "http://api.tkjidi.com/getGoodsLink?type=classify";
+        public const string TAOKEJIDI_CLASSLIST = "http://api.tkjidi.com/classList?appkey=2e647d2b90d02e01cdcb56afa0e222b8";
+        public const string TAOKEJIDI_ALL = "	http://api.tkjidi.com/getGoodsLink?type=www_lingquan";
+
         #endregion
     }
 }

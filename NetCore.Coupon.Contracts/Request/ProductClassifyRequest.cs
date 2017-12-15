@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NetCore.Coupon.Contracts.Request
 {
-    public class ProductListRequest : BaseRequest
+    public class ProductClassifyRequest : BaseRequest
     {
         public int PageNo { get; set; }
 

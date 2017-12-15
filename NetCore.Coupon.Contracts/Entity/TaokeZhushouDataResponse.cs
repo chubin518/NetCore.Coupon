@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace NetCore.Coupon.Contracts.Entity
 {
 
-    public class ZhushouProductItem
+    public class TaokeZhushouItem
     {
         /// <summary>
         /// 商品ID 
@@ -152,7 +152,7 @@ namespace NetCore.Coupon.Contracts.Entity
         public int Total { get; set; }
 
         [JsonProperty("data")]
-        public List<ZhushouProductItem> Data { get; set; }
+        public List<TaokeZhushouItem> Data { get; set; }
     }
 
 }

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NetCore.Coupon.Service
 {
@@ -22,28 +23,31 @@ namespace NetCore.Coupon.Service
             this.taobaoSdkDataRepository = taobaoSdkDataRepository;
         }
 
-        public ProductDetailResponse ProductDetail(ProductDetailRequest request)
+        public async Task<ProductDetailResponse> ProductDetail(ProductDetailRequest request)
         {
             ProductDetailResponse response = new ProductDetailResponse();
-            ProductDetailData detailData = taobaoApiDataRepository.GetProductDetail(request);
-            if (detailData == null || detailData.Item == null)
-            {
-                return response;
-            }
-            List<string> lstImages = taobaoApiDataRepository.GetProductDescx(request) ?? new List<string>();
+            var detailTask = taobaoApiDataRepository.GetProductDetail(request);
+            var imageTask = taobaoApiDataRepository.GetProductDescx(request);
+
+            await Task.WhenAll(detailTask, imageTask);
+
+            ProductDetailData productItem = detailTask.Result;
+            if (productItem == null || productItem.Item == null || productItem.Seller == null)
+                return new ProductDetailResponse();
+
             return new ProductDetailResponse()
             {
-                SPMC = detailData.Item.Title,
-                SPLM = detailData.Item.CategoryId,
-                DPMC = detailData.Seller.ShopName,
-                DPZT = ToolUtils.GetThumbnail(detailData.Seller.ShopIcon),
-                Images = detailData.Item.Images.Select(item => ToolUtils.GetThumbnail(item)).ToList(),
-                Evaluates = detailData.Seller.Evaluates?.Select(item => new Evaluate() { Score = item.Score, Title = item.Title }).ToList(),
-                Details = lstImages
+                SPMC = productItem.Item.Title,
+                SPLM = productItem.Item.CategoryId,
+                DPMC = productItem.Seller.ShopName,
+                DPZT = ToolUtils.GetThumbnail(productItem.Seller.ShopIcon),
+                Images = productItem.Item.Images.Select(item => ToolUtils.GetThumbnail(item, size: "")).ToList(),
+                Evaluates = productItem.Seller.Evaluates?.Select(item => new Evaluate() { Score = item.Score, Title = item.Title }).ToList(),
+                Details = imageTask.Result
             };
         }
 
-        public ProductListResponse GetRecommendProducts(RecommendProductRequest request)
+        public async Task<ProductListResponse> GetRecommendProducts(RecommendProductRequest request)
         {
             List<TbkProductInfo> lstResult = new List<TbkProductInfo>();
             List<TbkProductInfo> lstTaoSdk = taobaoSdkDataRepository.Search(new ProductSearchRequest() { CategoryIds = new List<long>() { request.CategoryId }, PageSize = 200, PageNo = 1 });
@@ -51,7 +55,7 @@ namespace NetCore.Coupon.Service
             {
                 lstResult.AddRange(lstTaoSdk);
             }
-            List<TbkProductInfo> lstTaoApi = taobaoApiDataRepository.CouponList(new CouponListRequest() { CategoryId = request.CategoryId });
+            List<TbkProductInfo> lstTaoApi = await taobaoApiDataRepository.CouponList(new CouponListRequest() { CategoryId = request.CategoryId });
             if (null != lstTaoApi)
             {
                 lstResult.AddRange(lstTaoApi);

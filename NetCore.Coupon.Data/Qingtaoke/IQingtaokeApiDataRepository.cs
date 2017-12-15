@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NetCore.Coupon.Contracts.Domain;
 using NetCore.Coupon.Contracts.Request;
 
@@ -6,23 +7,8 @@ namespace NetCore.Coupon.Data.Qingtaoke
 {
     public interface IQingtaokeApiDataRepository
     {
-        /// <summary>
-        /// 销量爆款
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        List<TbkProductInfo> BaoKuan(ProductSearchRequest request);
-        /// <summary>
-        /// 商品列表
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        List<TbkProductInfo> ItemList(ProductListRequest request);
-        /// <summary>
-        /// 商品搜索
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        List<TbkProductInfo> Search(ProductSearchRequest request);
+        Task<List<TbkProductInfo>> BaoKuan(ProductTopicRequest request);
+        Task<List<TbkProductInfo>> ItemList(ProductClassifyRequest request);
+        Task<List<TbkProductInfo>> Search(ProductSearchRequest request);
     }
 }

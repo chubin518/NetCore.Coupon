@@ -6,7 +6,7 @@ using System.Text;
 namespace NetCore.Coupon.Contracts.Entity
 {
 
-    public class Data
+    public class DataokeData
     {
 
         [JsonProperty("api_type")]
@@ -22,7 +22,7 @@ namespace NetCore.Coupon.Contracts.Entity
         public string UpdateContent { get; set; }
     }
 
-    public class DaotaokeProductItem
+    public class DaotaokeItem
     {
 
         [JsonProperty("ID")]
@@ -114,9 +114,9 @@ namespace NetCore.Coupon.Contracts.Entity
     {
 
         [JsonProperty("data")]
-        public Data Data { get; set; }
+        public DataokeData Data { get; set; }
 
         [JsonProperty("result")]
-        public DaotaokeProductItem[] Result { get; set; }
+        public DaotaokeItem[] Result { get; set; }
     }
 }

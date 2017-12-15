@@ -26,12 +26,14 @@ namespace NetCore.Coupon.Utility
             string result = url;
             if (!string.IsNullOrWhiteSpace(url) && url.StartsWith("//"))
             {
-                url = "https:" + url;
+                result = "https:" + url;
             }
 
-            if (!string.IsNullOrWhiteSpace(url) && url.EndsWith(".jpg"))
+            if (!string.IsNullOrWhiteSpace(size) 
+                && !string.IsNullOrWhiteSpace(result) 
+                && (result.EndsWith(".jpg") || result.EndsWith(".png")))
             {
-                result = url + size;
+                result = result + size;
             }
             return result;
         }

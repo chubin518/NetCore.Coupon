@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NetCore.Coupon.Contracts.Request
 {
-    public class ProductSpecialRequest : BaseRequest
+    public class ProductTopicRequest : BaseRequest
     {
         /// <summary>
         /// 

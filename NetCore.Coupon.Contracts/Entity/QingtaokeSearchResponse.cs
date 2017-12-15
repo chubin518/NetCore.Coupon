@@ -6,7 +6,7 @@ using System.Text;
 namespace NetCore.Coupon.Contracts.Entity
 {
 
-    public class QingtaokeProductItem
+    public class QingtaokeItem
     {
 
         [JsonProperty("goods_id")]
@@ -95,7 +95,7 @@ namespace NetCore.Coupon.Contracts.Entity
         public int Total { get; set; }
 
         [JsonProperty("list")]
-        public QingtaokeProductItem[] List { get; set; }
+        public QingtaokeItem[] List { get; set; }
     }
 
 

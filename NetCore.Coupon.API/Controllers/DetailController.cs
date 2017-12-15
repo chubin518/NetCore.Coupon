@@ -26,25 +26,25 @@ namespace NetCore.Coupon.API.Controllers
         }
         [Route("getdetail/")]
 
-        public ProductDetailResponse GetProductDetail(long id)
+        public async Task<ProductDetailResponse> GetProductDetail(long id)
         {
-            return memoryCache.GetOrCreate(id, (entry) =>
+            return await memoryCache.GetOrCreate(id, async (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3);
-                var result = detailService.ProductDetail(new ProductDetailRequest()
+                var result = await detailService.ProductDetail(new ProductDetailRequest()
                 {
                     ProductId = id
                 });
-                result.Recommends = detailService.GetRecommendProducts(new RecommendProductRequest() { CategoryId = result.SPLM.ToLong() })?.Datas;
+                result.Recommends = (await detailService.GetRecommendProducts(new RecommendProductRequest() { CategoryId = result.SPLM.ToLong() }))?.Datas;
                 return result;
             });
         }
 
         [Route("get/")]
 
-        public ProductDetailResponse ProductDetail(long id)
+        public async Task<ProductDetailResponse> ProductDetail(long id)
         {
-            return memoryCache.GetOrCreate(id, (entry) =>
+            return await memoryCache.GetOrCreate(id, (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3);
                 return detailService.ProductDetail(new ProductDetailRequest()
@@ -56,9 +56,9 @@ namespace NetCore.Coupon.API.Controllers
 
         [Route("similar")]
 
-        public ProductListResponse GetRecommendProducts(long cat)
+        public async Task<ProductListResponse> GetRecommendProducts(long cat)
         {
-            return memoryCache.GetOrCreate(cat, (entry) =>
+            return await memoryCache.GetOrCreate(cat, (entry) =>
             {
                 entry.SlidingExpiration = TimeSpan.FromSeconds(3);
                 return detailService.GetRecommendProducts(new RecommendProductRequest() { CategoryId = cat });
