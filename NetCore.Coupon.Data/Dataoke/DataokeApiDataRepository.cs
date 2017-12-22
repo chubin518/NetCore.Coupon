@@ -107,5 +107,21 @@ namespace NetCore.Coupon.Data.Dataoke
             }
             return new List<TbkProductInfo>();
         }
+
+        public Task<List<TbkProductInfo>> QQ(ProductTopicRequest request)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                var dtkResponse = new HttpUtils().DoGet<DataokeSearchResponse>(ConstantsUtils.DATAOKE_QQ, new Dictionary<string, string>() {
+                        { "appkey", ConstantsUtils.DATAOKE_APP_KEY },
+                        { "page", request.PageNo.ToString() }
+                    });
+                if (null != dtkResponse && dtkResponse.Result != null)
+                {
+                    return GetProductList(dtkResponse.Result);
+                }
+                return new List<TbkProductInfo>();
+            });
+        }
     }
 }

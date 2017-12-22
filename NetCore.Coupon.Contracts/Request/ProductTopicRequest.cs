@@ -14,5 +14,7 @@ namespace NetCore.Coupon.Contracts.Request
         public int PageNo { get; set; }
 
         public int Sort { get; set; }
+
+        public int Cat { get; set; }
     }
 }

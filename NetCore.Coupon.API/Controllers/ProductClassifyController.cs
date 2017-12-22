@@ -25,7 +25,7 @@ namespace NetCore.Coupon.API.Controllers
         [Route("List")]
         public async Task<ProductListResponse> List(int cat = 0, int pageno = 1, int pagesize = 100, int sort = 0)
         {
-            return await memoryCache.GetOrCreate($"classify_product{cat}_{pageno}{pagesize}_{sort}", (entry) =>
+            return await memoryCache.GetOrCreate($"classify_product{cat}_{pageno}_{pagesize}_{sort}", (entry) =>
             {
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(13);
                 return productClassifyService.List(new ProductClassifyRequest() { Cat = cat, PageNo = pageno, Sort = sort, PageSize = pagesize });

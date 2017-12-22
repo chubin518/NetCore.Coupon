@@ -64,6 +64,10 @@ namespace NetCore.Coupon.Utility
         public const string DATAOKE_TOP100 = "http://api.dataoke.com/index.php?r=Port/index&type=top100&v=2";
         //实时销量榜
         public const string DATAOKE_PAOLIANG = "http://api.dataoke.com/index.php?r=Port/index&type=paoliang&v=2";
+        /// <summary>
+        /// QQ群专用API接口
+        /// </summary>
+        public const string DATAOKE_QQ = "http://api.dataoke.com/index.php?r=goodsLink/qq&type=qq_quan&v=2";
 
         #endregion
 
@@ -98,7 +102,8 @@ namespace NetCore.Coupon.Utility
         public const string TAOKEJIDI_SEARCH = "http://api.tkjidi.com/getGoodsLink?type=so";
         public const string TAOKEJIDI_CATEGORY = "http://api.tkjidi.com/getGoodsLink?type=classify";
         public const string TAOKEJIDI_CLASSLIST = "http://api.tkjidi.com/classList?appkey=2e647d2b90d02e01cdcb56afa0e222b8";
-        public const string TAOKEJIDI_ALL = "	http://api.tkjidi.com/getGoodsLink?type=www_lingquan";
+        public const string TAOKEJIDI_ALL = "http://api.tkjidi.com/getGoodsLink?type=www_lingquan";
+        public const string TAOKEJIDI_QQ = "http://api.tkjidi.com/getGoodsLink?type=qq_qun_ling";
 
         #endregion
     }

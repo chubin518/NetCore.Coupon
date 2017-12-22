@@ -10,5 +10,6 @@ namespace NetCore.Coupon.Data.Dataoke
         Task<List<TbkProductInfo>> All(ProductTopicRequest request);
         Task<List<TbkProductInfo>> Top100(ProductTopicRequest request);
         Task<List<TbkProductInfo>> XiaoLiang(ProductTopicRequest request);
+        Task<List<TbkProductInfo>> QQ(ProductTopicRequest request);
     }
 }

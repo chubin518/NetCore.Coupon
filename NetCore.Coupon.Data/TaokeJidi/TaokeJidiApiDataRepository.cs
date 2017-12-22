@@ -153,5 +153,24 @@ namespace NetCore.Coupon.Data.TaokeJidi
                 Rate = item.Rate.ToDouble()
             }).ToList();
         }
+
+        public Task<List<TbkProductInfo>> QQ(ProductTopicRequest request)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                var tkjdResponse = new HttpUtils().DoGet<TaokeJidiDataResponse>(ConstantsUtils.TAOKEJIDI_QQ,
+                    new Dictionary<string, string>()
+                    {
+                    { "appkey", ConstantsUtils.TAOKEJIDI_KEY },
+                    { "page", request.PageNo.ToString() }
+                    });
+
+                if (null != tkjdResponse && tkjdResponse.Data != null)
+                {
+                    return GetProductList(tkjdResponse.Data);
+                }
+                return new List<TbkProductInfo>();
+            });
+        }
     }
 }

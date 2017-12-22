@@ -13,5 +13,6 @@ namespace NetCore.Coupon.Data.TaokeJidi
         Task<List<TbkProductInfo>> Search(ProductSearchRequest request);
         Task<List<TbkProductInfo>> Top100(ProductTopicRequest request);
         Task<List<TbkProductInfo>> All(ProductTopicRequest request);
+        Task<List<TbkProductInfo>> QQ(ProductTopicRequest request);
     }
 }
