@@ -37,34 +37,36 @@ namespace NetCore.Coupon.Service
             var zhushou = taokeZhushouApiDataRepository.Search(request);
             var jidi = taokeJidiApiDataRepository.Search(request);
 
-            return await Task.WhenAll(qing, zhushou, jidi).ContinueWith(task =>
-             {
-                 List<TbkProductInfo> lstResult = new List<TbkProductInfo>();
+            var datas = await Task.WhenAll(qing, zhushou, jidi).ContinueWith(task =>
+              {
+                  List<TbkProductInfo> lstResult = new List<TbkProductInfo>();
+                  task.Result.ToList().ForEach(item =>
+                  {
+                      if (item == null)
+                          return;
+                      lstResult.AddRange(item);
+                  });
+                  return lstResult.Distinct(new ProductIdComparer()).Sort(request.Sort, false).ToList();
+              });
 
-                 task.Result.ToList().ForEach(item =>
-                 {
-                     if (item == null)
-                         return;
-                     lstResult.AddRange(item);
-                 });
+            if (datas == null || datas.Count <= 0)
+            {
+                List<TbkProductInfo> lstTao = await sdkDataRepository.Search(request);
+                if (null != lstTao)
+                {
+                    datas = lstTao;
+                }
+                else
+                {
+                    datas = new List<TbkProductInfo>();
+                }
+            }
 
-                 lstResult = lstResult.Distinct(new ProductIdComparer()).Sort(request.Sort, false).ToList();
-
-                 if (lstResult == null || lstResult.Count <= 0)
-                 {
-                     List<TbkProductInfo> lstTao = sdkDataRepository.Search(request);
-                     if (null != lstTao)
-                     {
-                         lstResult.AddRange(lstTao);
-                     }
-                 }
-
-                 return new ProductListResponse()
-                 {
-                     Datas = lstResult,
-                     Total = lstResult.Count
-                 };
-             });
+            return new ProductListResponse()
+            {
+                Datas = datas,
+                Total = datas.Count
+            };
         }
     }
 }

@@ -148,22 +148,32 @@ namespace NetCore.Coupon.API.Controllers
                     new ConfigItem(){
                         ID=7,
                         Name="超值9块9",
-                        Icon ="https://www.51hui.xin/images/9k9.jpg"
+                        Icon ="https://www.51hui.xin/images/9k91.png"
                     },
                     new ConfigItem(){
                         ID=8,
                         Name="20元封顶",
-                        Icon ="https://www.51hui.xin/images/20yuan.jpg"
+                        Icon ="https://www.51hui.xin/images/20yuan.png"
+                    },
+                    new ConfigItem(){
+                        ID=10,
+                        Name="品牌特卖",
+                        Icon ="https://www.51hui.xin/images/temai.png"
                     },
                     new ConfigItem(){
                         ID=9,
                         Name="精品海淘",
-                        Icon ="https://www.51hui.xin/images/muying.jpg"
+                        Icon ="https://www.51hui.xin/images/haitao.png"
+                    },
+                    new ConfigItem(){
+                        ID=1,
+                        Name="小编推荐",
+                        Icon ="https://www.51hui.xin/images/pinpai.png"
                     },
                     new ConfigItem(){
                         ID=2,
                         Name="销量爆款",
-                        Icon ="https://www.51hui.xin/images/tejia.jpg"
+                        Icon ="https://www.51hui.xin/images/pinpai.png"
                     }
                 }
             };

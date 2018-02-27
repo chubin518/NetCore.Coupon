@@ -28,9 +28,9 @@ namespace NetCore.Coupon.API.Controllers
 
         public async Task<ProductDetailResponse> GetProductDetail(long id)
         {
-            return await memoryCache.GetOrCreate(id, async (entry) =>
+            return await memoryCache.GetOrCreate($"GetProductDetail_{id}", async (entry) =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3);
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
                 var result = await detailService.ProductDetail(new ProductDetailRequest()
                 {
                     ProductId = id
@@ -44,9 +44,9 @@ namespace NetCore.Coupon.API.Controllers
 
         public async Task<ProductDetailResponse> ProductDetail(long id)
         {
-            return await memoryCache.GetOrCreate(id, (entry) =>
+            return await memoryCache.GetOrCreate($"ProductDetail_{id}", (entry) =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3);
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(40);
                 return detailService.ProductDetail(new ProductDetailRequest()
                 {
                     ProductId = id

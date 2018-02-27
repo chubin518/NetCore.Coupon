@@ -129,12 +129,15 @@ namespace NetCore.Coupon.Contracts.Response
     {
 
         [JsonProperty("api")]
+        [JsonIgnore]
         public string Api { get; set; }
 
         [JsonProperty("v")]
+        [JsonIgnore]
         public string V { get; set; }
 
         [JsonProperty("ret")]
+        [JsonIgnore]
         public string[] Ret { get; set; }
 
         [JsonProperty("data")]

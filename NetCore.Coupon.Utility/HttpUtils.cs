@@ -13,8 +13,8 @@ namespace NetCore.Coupon.Utility
 {
     public class HttpUtils
     {
-        private int _timeout = 20000;
-        private int _readWriteTimeout = 60000;
+        private int _timeout = 10000;
+        private int _readWriteTimeout = 30000;
         private bool _ignoreSSLCheck = true;
         private bool _disableWebProxy = false;
 
@@ -128,7 +128,7 @@ namespace NetCore.Coupon.Utility
                 }
                 catch (Exception ex)
                 {
-                    LogUtils.Error(ex);
+                    LogUtils.Error(ex, url);
                 }
             }
             return default(T);
@@ -159,7 +159,7 @@ namespace NetCore.Coupon.Utility
             }
             catch (Exception ex)
             {
-                LogUtils.Error(ex);
+                LogUtils.Error(ex, url);
             }
             return string.Empty;
         }
@@ -240,7 +240,7 @@ namespace NetCore.Coupon.Utility
             }
             else
             {
-                req.UserAgent = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Mobile Safari/537.36";
+                req.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1";
             }
             if (!string.IsNullOrWhiteSpace(ContentType))
             {
@@ -250,6 +250,7 @@ namespace NetCore.Coupon.Utility
             {
                 req.Referer = Referer;
             }
+            
             return req;
         }
 

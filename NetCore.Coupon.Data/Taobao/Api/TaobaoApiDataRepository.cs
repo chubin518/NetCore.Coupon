@@ -15,12 +15,13 @@ namespace NetCore.Coupon.Data.Taobao.Api
     public class TaobaoApiDataRepository : ITaobaoApiDataRepository
     {
         /// <summary>
-        /// 获取详情描述
+        /// 获取详情描述6.0
         /// </summary>
-        public Task<ProductDetailData> GetProductDetail(ProductDetailRequest request)
+        public Task<TbkDetailInfo> GetProductDetail(ProductDetailRequest request)
         {
             return Task.Factory.StartNew(() =>
             {
+                return new TbkDetailInfo();
                 string reqData = Uri.EscapeDataString(JsonConvert.SerializeObject(new TaobaoProductDetailRequest()
                 {
                     ItemNumId = request.ProductId.ToString(),
@@ -34,14 +35,68 @@ namespace NetCore.Coupon.Data.Taobao.Api
                         Time = ToolUtils.GetUnixTime()
                     })
                 }));
-
-                TaobaoProductDetailResponse response = new HttpUtils().DoGet<TaobaoProductDetailResponse>(ConstantsUtils.TAOBAO_API_PRODUCTDETAIL + "?data=" + reqData,
-                  null);
-                if (null != response && null != response.Data)
+                int random = ToolUtils.GetRandomNum() % 3;
+                string url = "";
+                if (random == 0)
                 {
-                    return response.Data;
+                    url = $"{ConstantsUtils.TAOBAO_API_PRODUCTDETAIL}?id={request.ProductId}";
+                    TaobaoProductDetailV5Response responseV5 = new HttpUtils().DoGet<TaobaoProductDetailV5Response>(url, null);
+                    if (null != responseV5
+                    && responseV5.Data != null
+                    && responseV5.Data.ItemInfoModel != null
+                    && responseV5.Data.Seller != null)
+                    {
+                        var lstImage = responseV5.Data.ItemInfoModel.PicsPath?.Select(item => ToolUtils.GetThumbnail(item, "")).ToList();
+                        return new TbkDetailInfo()
+                        {
+                            Title = responseV5.Data.ItemInfoModel.Title,
+                            CategoryId = responseV5.Data.ItemInfoModel.CategoryId,
+                            Evaluates = responseV5.Data.Seller.EvaluateInfo.Select(item => new Evaluate()
+                            {
+                                Title = item.Title,
+                                Score = item.Score
+                            }).ToList(),
+                            ShopIcon = ToolUtils.GetThumbnail(responseV5.Data.Seller.PicUrl, ""),
+                            NumIid = responseV5.Data.ItemInfoModel.ItemId,
+                            ShopName = responseV5.Data.Seller.ShopTitle,
+                            Images = lstImage ?? new List<string>()
+                        };
+                    }
                 }
-                return new ProductDetailData();
+                else
+                {
+                    if (random == 1)
+                    {
+                        url = $"{ConstantsUtils.TAOBAO_API_PRODUCTDETAIL1}?data={reqData}";
+                    }
+                    else
+                    {
+                        url = $"{ConstantsUtils.TAOBAO_API_PRODUCTDETAIL2}?data={reqData}";
+                    }
+                    TaobaoProductDetailResponse responseV6 = new HttpUtils().DoGet<TaobaoProductDetailResponse>(url, null);
+                    if (null != responseV6
+                        && null != responseV6.Data
+                        && null != responseV6.Data.Item
+                        && null != responseV6.Data.Seller)
+                    {
+                        var lstImage = responseV6.Data.Item.Images?.Select(item => ToolUtils.GetThumbnail(item, "")).ToList();
+                        return new TbkDetailInfo()
+                        {
+                            NumIid = responseV6.Data.Item.ItemId,
+                            Title = responseV6.Data.Item.Title,
+                            CategoryId = responseV6.Data.Item.CategoryId,
+                            Images = lstImage ?? new List<string>(),
+                            ShopIcon = ToolUtils.GetThumbnail(responseV6.Data.Seller.ShopIcon, ""),
+                            ShopName = responseV6.Data.Seller.ShopName,
+                            Evaluates = responseV6.Data.Seller.Evaluates.Select(item => new Evaluate
+                            {
+                                Score = item.Score,
+                                Title = item.Title
+                            }).ToList()
+                        };
+                    }
+                }
+                return new TbkDetailInfo();
             });
         }
 

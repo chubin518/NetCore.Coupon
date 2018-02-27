@@ -131,6 +131,9 @@ namespace NetCore.Coupon.Service
                         PageNo = request.PageNo
                     }));
                     break;
+                case 10:
+                    lstTask.Add(taokeJidiApiDataRepository.PinPai(request));
+                    break;
             }
             return await GetProductList(request, lstTask, request.Type != 9);
         }
@@ -236,7 +239,7 @@ namespace NetCore.Coupon.Service
                         Juhuasuan = 1,
                         Sort = request.Sort,
                         PageNo = request.PageNo,
-                        Cat=request.Cat
+                        Cat = request.Cat
                     }));
                     lstTask.Add(qingtaokeApiDataRepository.ItemList(new ProductClassifyRequest()
                     {

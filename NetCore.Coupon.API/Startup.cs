@@ -23,6 +23,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NetCore.Coupon.Data.TaokeZhushou;
 using NetCore.Coupon.Data.TaokeJidi;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace NetCore.Coupon.API
 {
@@ -53,7 +54,13 @@ namespace NetCore.Coupon.API
 
             services.AddSingleton(Configuration);
 
-            services.AddScoped<ITopClient>(d => new DefaultTopClient(ConstantsUtils.SERVER_URL, ConstantsUtils.APP_KEY, ConstantsUtils.APP_SECRET));
+            //services.AddSingleton<IMemoryCache, MemoryCache>();
+            services.AddSingleton<IMemoryCache>(factory =>
+            {
+                return new MemoryCache(new MemoryCacheOptions());
+            });
+
+            services.AddSingleton<ITopClient>(factory => new DefaultTopClient(ConstantsUtils.SERVER_URL, ConstantsUtils.APP_KEY, ConstantsUtils.APP_SECRET));
 
             services.AddScoped<ITaobaoApiDataRepository, TaobaoApiDataRepository>();
             services.AddScoped<ITaobaoSdkDataRepository, TaobaoSdkDataRepository>();

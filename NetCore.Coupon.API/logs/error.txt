@@ -1,0 +1,68 @@
+ERROR 2018-01-13 22:09:54,741 213739ms logerror               ?                  - 
+System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 156
+ERROR 2018-01-18 15:07:52,792 49258ms logerror               ?                  - https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7b%27item_num_id%27%3a545175953648%7d&type=json&_=636518848588407061
+System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 156
+ERROR 2018-01-18 15:07:52,792 49258ms logerror               ?                  - https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7b%27item_num_id%27%3a545175953648%7d&type=json&_=636518848550647100
+System.Net.WebException: The operation has timed out.
+   at System.Net.HttpWebRequest.GetResponse()
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 156
+ERROR 2018-01-19 23:19:52,866 44329ms logerror               ?                  - https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7b%27item_num_id%27%3a545175953648%7d&type=json&_=636520007927085343
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:19:54,945 46409ms logerror               ?                  - https://unszacs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/?data=%7B%22itemNumId%22%3A%22545175953648%22%7D
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:19:55,477 46940ms logerror               ?                  - https://uland.taobao.com/cp/coupon_list?queryCount=500&pid=mm_124544751_34022481_121394480&category=0&_=636520007954488047
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:20:08,850 60314ms logerror               ?                  - https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7b%27item_num_id%27%3a545175953648%7d&type=json&_=636520008078069004
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:20:08,861 60324ms logerror               ?                  - https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22itemNumId%22%3A%22545175953648%22%7D
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:20:34,050 85513ms logerror               ?                  - https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?data=%7b%27item_num_id%27%3a545175953648%7d&type=json&_=636520008328603656
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153
+ERROR 2018-01-19 23:20:38,913 90376ms logerror               ?                  - https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22itemNumId%22%3A%22545175953648%22%7D
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Net.SystemWebProxy.GetProxy(Uri destination)
+   at System.Net.ServicePointManager.ProxyAddressIfNecessary(Uri& address, IWebProxy proxy)
+   at System.Net.ServicePointManager.FindServicePoint(Uri address, IWebProxy proxy)
+   at System.Net.HttpWebRequest.get_ServicePoint()
+   at NetCore.Coupon.Utility.HttpUtils.GetWebRequest(String url, String method, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 220
+   at NetCore.Coupon.Utility.HttpUtils.DoGet(String url, IDictionary`2 textParams, IDictionary`2 headerParams) in E:\reactnative\NetCore.Coupon\NetCore.Coupon.Utility\HttpUtils.cs:line 153

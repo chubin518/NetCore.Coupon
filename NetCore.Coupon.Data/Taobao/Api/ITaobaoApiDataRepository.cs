@@ -10,6 +10,6 @@ namespace NetCore.Coupon.Data.Taobao.Api
     {
         Task<List<TbkProductInfo>> CouponList(CouponListRequest request);
         Task<List<string>> GetProductDescx(ProductDetailRequest request);
-        Task<ProductDetailData> GetProductDetail(ProductDetailRequest request);
+        Task<TbkDetailInfo> GetProductDetail(ProductDetailRequest request);
     }
 }

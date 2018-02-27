@@ -34,11 +34,15 @@ namespace NetCore.Coupon.Utility
 
         public const string TAOBAO_API_COUPONCHECK = "https://uland.taobao.com/cp/coupon";
 
-        public const string TAOBAO_API_COUPONSEARCH = "http://pub.alimama.com/items/search.json";
+        public const string TAOBAO_API_COUPONSEARCH = "https://pub.alimama.com/items/search.json";
 
-        public const string TAOBAO_API_PRODUCTDESCX = "http://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/";
+        public const string TAOBAO_API_PRODUCTDESCX = "https://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/";
 
-        public const string TAOBAO_API_PRODUCTDETAIL = "https://unszacs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0";
+        public const string TAOBAO_API_PRODUCTDETAIL = "https://hws.m.taobao.com/cache/wdetail/5.0/";
+
+        public const string TAOBAO_API_PRODUCTDETAIL1 = "https://unszacs.m.taobao.com/gw/mtop.taobao.detail.getdetail/6.0/";
+
+        public const string TAOBAO_API_PRODUCTDETAIL2 = "https://acs.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/";
         #endregion
 
         #region QINGTAOKE_API

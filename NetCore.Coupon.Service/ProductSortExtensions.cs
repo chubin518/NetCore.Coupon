@@ -30,7 +30,7 @@ namespace NetCore.Coupon.Service
                     result = source.OrderByDescending(item => item.Rate).ThenByDescending(item => (item.CP.ToDouble() / 1000) * item.SPYXL);
                     break;
                 default:
-                    result = source.OrderByDescending(item => (item.CP.ToDouble() / new Random().Next(500, 1000)) * item.SPYXL * (item.Rate / new Random().Next(1000, 2000))).ThenBy(item => item.FP.ToDouble()).Shuffle();
+                    result = source.OrderByDescending(item => ToolUtils.GetRandomNum(0, 300000)).Shuffle();
                     break;
             }
             return result;

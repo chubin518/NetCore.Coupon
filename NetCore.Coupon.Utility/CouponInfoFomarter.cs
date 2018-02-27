@@ -16,6 +16,10 @@ namespace NetCore.Coupon.Utility
         /// <returns></returns>
         public static Tuple<decimal, string> GetCouponPrice(string info)
         {
+            if (string.IsNullOrWhiteSpace(info))
+            {
+                return new Tuple<decimal, string>(0, "");
+            }
             Tuple<decimal, string> coupon = new Tuple<decimal, string>(0, info);
             var matchs = regex.Matches(info);
             if (matchs.Count == 1)

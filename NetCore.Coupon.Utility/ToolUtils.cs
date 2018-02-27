@@ -28,14 +28,22 @@ namespace NetCore.Coupon.Utility
             {
                 result = "https:" + url;
             }
+            else if (!string.IsNullOrWhiteSpace(url) && url.StartsWith("http:"))
+            {
+                result = url.Replace("http:", "https:", StringComparison.OrdinalIgnoreCase);
+            }
 
-            if (!string.IsNullOrWhiteSpace(size) 
-                && !string.IsNullOrWhiteSpace(result) 
+            if (!string.IsNullOrWhiteSpace(size)
+                && !string.IsNullOrWhiteSpace(result)
                 && (result.EndsWith(".jpg") || result.EndsWith(".png")))
             {
                 result = result + size;
             }
-            return result;
+            if (string.IsNullOrWhiteSpace(size))
+            {
+                return result;
+            }
+            return result + url.Substring(url.LastIndexOf('.'));
         }
 
         public static string GetHttpsUrl(string url)
@@ -60,11 +68,11 @@ namespace NetCore.Coupon.Utility
                 couponId, pid, itemId);
         }
 
-        public static int GetRandomNum()
+        public static int GetRandomNum(int start = 0, int next = 200)
         {
             long tick = DateTime.Now.Ticks;
             Random ran = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
-            return ran.Next(0, 200);
+            return ran.Next(start, next);
         }
     }
 }
